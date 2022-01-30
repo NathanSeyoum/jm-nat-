@@ -5,8 +5,9 @@
 JSON objects fetched from the Internet and
 
 """
-
-from . import datafetcher
+print("silly")
+from . import datafetcher # @james mcallister trying to make task 1B work
+#import datafetcher
 from .station import MonitoringStation
 
 
