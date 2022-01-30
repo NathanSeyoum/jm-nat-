@@ -33,6 +33,8 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
         diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
 
+        #to get actual angle multiply by earth radius
+        
         return diffrenceInAngle
 
     # itterator for the stations
@@ -49,21 +51,13 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
 
     stationListByDistance = sorted(stationsandDistances, key = firstEl)
     
-    listofNamesByDistance = []
+    listofNamesByDistance = [] # 
     for n in stationListByDistance:
         listofNamesByDistance.append(n[0])
 
-    return listofNamesByDistance
+    return stationListByDistance
 
 
-
-
-        
-
-
-
-
-
-
-
+    def stations_within_radius(stations, centre, r):
+        withingRadius = stations_by_distance(stations)
         
