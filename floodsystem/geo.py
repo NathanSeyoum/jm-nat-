@@ -11,11 +11,17 @@ geographical data.
 #from .utils import sorted_by_key  # noqa
 import math
 
-print("working")
+strangle = [("penis", 5), ("penis", 1), ("penis", 4)]
+
+#print(tuple(map(float, strangle.split(';')[2].split(':')[1].split(","))))
+def firstEl(el):
+        return el[1]
+print(sorted(strangle, key = firstEl))
 
 def stations_by_distance(stations, p):      #task 1B james mcallister
     
     #the return list
+    stationsandDistances = []
     stationListByDistance = []
     
     def angleBetweenCoordinates(coords): # a function that uses the wikipida formula https://en.m.wikipedia.org/wiki/Great-circle_distance#Formulas
@@ -35,9 +41,19 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     for station in stations:
         #takes monetring station class and gets important bits 
         name = station.split('\n')[0].split(':')[1]
-        coordinate = station.split('\n')[3].split(':')[1] # these are in WGS84 coordinate system
+        coordinateRaw = station.split('\n')[3].split(':')[1].split(",") # these are in WGS84 coordinate system
+        coordinatesTrimmed = coordinateRaw[1:-1] # spliting up the steps to reduce complexity
+        coordinates = tuple(map(float, coordinatesTrimmed.split(",")))
+        stationsandDistances.append(name,angleBetweenCoordinates(coordinates)) 
 
-        #TODO: turn string to tuple coord system / sort names by angleBetweenCoordinates / return list?? maybe string
+    def firstEl(el):
+        return el[0]
+    stationListByDistance = sorted(stationsandDistances, key = firstEl)
+
+
+
+
+        #TODO:  sort names by angleBetweenCoordinates / return list?? maybe string
 
 
 
