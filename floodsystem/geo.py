@@ -11,15 +11,13 @@ geographical data.
 #from .utils import sorted_by_key  # noqa
 import math
 
-strangle = [("penis", 5), ("penis", 1), ("penis", 4)]
 
-#print(tuple(map(float, strangle.split(';')[2].split(':')[1].split(","))))
-def firstEl(el):
-        return el[1]
-print(sorted(strangle, key = firstEl))
 
 def stations_by_distance(stations, p):      #task 1B james mcallister
-    
+    # returns list of names by points 
+    # needs testing
+
+
     #the return list
     stationsandDistances = []
     stationListByDistance = []
@@ -30,7 +28,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         long_1,lat_1 = p
         long_2, lat_2 = coords
 
-        #simp of math
+        #simplification of of math
         multOfSinLat = math.sin(lat_1) * math.sin(lat_2)
         multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
         diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
@@ -46,14 +44,21 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         coordinates = tuple(map(float, coordinatesTrimmed.split(",")))
         stationsandDistances.append(name,angleBetweenCoordinates(coordinates)) 
 
-    def firstEl(el):
+    def firstEl(el):# this func has been checked but works for the sorting function
         return el[0]
+
     stationListByDistance = sorted(stationsandDistances, key = firstEl)
+    
+    listofNamesByDistance = []
+    for n in stationListByDistance:
+        listofNamesByDistance.append(n[0])
+
+    return listofNamesByDistance
 
 
 
 
-        #TODO:  sort names by angleBetweenCoordinates / return list?? maybe string
+        
 
 
 
