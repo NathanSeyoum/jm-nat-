@@ -67,6 +67,41 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
             name,ang = monstat
             dist = ang*earthRadius
 
+#for task 1D by Nathan
+def rivers_with_stations(stations):
+#returns a set of the names of rivers with a monintoring station, 
+#given a list of station objects
+  
+   #creates an empty set
+    station_rivers = set()
+    
+    #checks for rivers with a monitoring station and adds them to the set
+    for station in stations:       
+        if station.river != None:
+            station_rivers.add(station.river)
+    
+    return station_rivers
 
+#also for task 1D by Nathan
+def stations_by_river(stations):
+#returns a dictionary that maos river names to a list of stations monitoring them
 
+    #gets set of river names
+    stationrivers = rivers_with_stations(stations)
+    
+    dictionary = {}
+
+    #for each river, creates an empty list
+    for river in stationrivers: 
+        stationslist = []
+
+        #finds the stations monitoring the river and add them to the list
+        for station in stations:
+            if station.river == river:
+                stationslist.append(station.name)
+
+        #adds the river(key) and list(value) pair to the dictionary
+        dictionary[river] = stationslist
+    
+    return dictionary
 
