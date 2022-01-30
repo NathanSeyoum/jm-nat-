@@ -59,13 +59,19 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
 
 
 #task 1C
-    def stations_within_radius(stations, centre, r):
-        withingRadius = stations_by_distance(stations, centre)
-        earthRadius = 6378.137
+def stations_within_radius(stations, centre, r):
+    withingRadius = stations_by_distance(stations, centre)
+    earthRadius = 6378.137
+    withinRadius = []
         
-        for monstat in withingRadius:
-            name,ang = monstat
-            dist = ang*earthRadius
+    for monstat in withingRadius:
+        name,ang = monstat
+        dist = ang*earthRadius
+        if dist <= r:
+            withinRadius.append(name)
+
+    return withinRadius
+
 
 #for task 1D by Nathan
 def rivers_with_stations(stations):
