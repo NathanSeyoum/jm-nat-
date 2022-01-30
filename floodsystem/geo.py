@@ -57,6 +57,8 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
 
     return stationListByDistance #TODO: @james mcallister put in distance away instead of angle and put in and town name 
 
+
+#task 1C
     def stations_within_radius(stations, centre, r):
         withingRadius = stations_by_distance(stations, centre)
         earthRadius = 6378.137
