@@ -3,6 +3,8 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_with_stations, stations_by_river
 
 def run():
+    
+    #builds list of stations
     stations = build_station_list()
     
     #first part of task 1D
