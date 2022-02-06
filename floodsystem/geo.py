@@ -58,14 +58,15 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     return stationListByDistance #TODO: @james mcallister put in distance away instead of angle and put in and town name 
 
 
-#task 1C
+#task 1C @ james mcallister
 def stations_within_radius(stations, centre, r):
+    # fetches data by distances
     withingRadius = stations_by_distance(stations, centre)
     earthRadius = 6378.137
     withinRadius = []
         
     for monstat in withingRadius:
-        name,ang = monstat
+        name,ang = monstat#
         dist = ang*earthRadius
         if dist <= r:
             withinRadius.append(name)
@@ -81,7 +82,7 @@ def rivers_with_stations(stations):
    #creates an empty set
     station_rivers = set()
     
-    #checks for rivers with a monitoring station and adds them to the set
+    #checks for ring station and adds them to the set
     for station in stations:       
         if station.river != None:
             station_rivers.add(station.river)
@@ -110,4 +111,33 @@ def stations_by_river(stations):
         dictionary[river] = stationslist
     
     return dictionary
+
+#task 1E @james mcallister
+def rivers_by_station_number(stations, N):
+    listOfStations = []
+    variableAdded = False
+    def searchlist(stationName):
+        # searches list
+        for items in listOfStations:
+            if items[0] == stationName:
+                items[1] += 1
+                variableAdded = False
+        
+        #adds new station
+        if variableAdded == False:
+            listOfStations.append((stationName,1))
+            
+            
+            
+    for station in stations:
+        # get river name 
+        name = station.split('\n')[5].split(':')[1]
+        # searches list for name
+        searchlist(name)
+        
+    return listOfStations
+
+
+
+
 
