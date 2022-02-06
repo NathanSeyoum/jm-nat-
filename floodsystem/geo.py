@@ -115,9 +115,10 @@ def stations_by_river(stations):
 #task 1E @james mcallister
 def rivers_by_station_number(stations, N):
     listOfStations = []
-    variableAdded = False
+    
     def searchlist(stationName):
         # searches list
+        variableAdded = False
         for items in listOfStations:
             if items[0] == stationName:
                 items[1] += 1
