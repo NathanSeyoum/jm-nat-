@@ -122,7 +122,7 @@ def rivers_by_station_number(stations, N):
         for items in listOfStations:
             if items[0] == stationName:
                 items[1] += 1
-                variableAdded = False
+                variableAdded = True
         
         #adds new station
         if variableAdded == False:
