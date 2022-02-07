@@ -10,7 +10,6 @@ geographical data.
 
 #from .utils import sorted_by_key  # noqa
 import math
-
 from numpy import True_
 
 
@@ -31,13 +30,25 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         long_2, lat_2 = coords
 
         #simplification of of math
+        '''
         multOfSinLat = math.sin(lat_1) * math.sin(lat_2)
         multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
         diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
-        #diffrenceInAngle *= 6378.137*2
+        diffrenceInAngle *= 6378.137
+        '''
+        
+        #stolen code
+        # haversine formula 
+        dlon = long_2 - long_1 
+        dlat = lat_2 - lat_1 
+        a = math.sin(dlat/2)**2 + math.cos(lat_1) * math.cos(lat_2) * math.sin(dlon/2)**2
+        c = 2 * math.asin(math.sqrt(a)) 
+        r = 6371
         #to get actual angle multiply by earth radius
         
-        return diffrenceInAngle
+        # returns a distance now
+        #return diffrenceInAngle
+        return c * r 
 
     # itterator for the stations
     for station in stations:
@@ -65,12 +76,10 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
 def stations_within_radius(stations, centre, r):
     # fetches data by distances
     withingRadius = stations_by_distance(stations, centre)
-    #earthRadius = 6378.137 *2
     withinRadius = []
         
-    for monstat in withingRadius:
-        name, town, ang = monstat#
-        dist = ang#*earthRadius
+    for monitor in withingRadius:
+        name, town, dist = monitor
         if dist <= r:
             withinRadius.append(name)
 
@@ -147,7 +156,7 @@ def rivers_by_station_number(stations, N):
     #listOfStations.sort()
 
     def firstEl(el):# this func has been checked but works for the sorting function
-        print(el[1])
+        
         return el[1]
 
     stationListByCount = sorted(listOfStations, key = firstEl, reverse=True)
@@ -158,7 +167,6 @@ def rivers_by_station_number(stations, N):
         stationTuple.append(thing)
 
     return stationTuple[:N]
-
 
 
 
