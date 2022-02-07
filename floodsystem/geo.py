@@ -136,7 +136,9 @@ def rivers_by_station_number(stations, N):
         # searches list for name
         searchlist(name)
         
-    return listOfStations
+    # sorting
+    listOfStations.sort()
+    return listOfStations[:N]
 
 
 
