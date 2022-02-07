@@ -11,6 +11,8 @@ geographical data.
 #from .utils import sorted_by_key  # noqa
 import math
 
+from numpy import True_
+
 
 
 def stations_by_distance(stations, p):      #task 1B james mcallister
@@ -32,7 +34,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         multOfSinLat = math.sin(lat_1) * math.sin(lat_2)
         multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
         diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
-        diffrenceInAngle *= 6378.137
+        #diffrenceInAngle *= 6378.137*2
         #to get actual angle multiply by earth radius
         
         return diffrenceInAngle
@@ -63,12 +65,12 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
 def stations_within_radius(stations, centre, r):
     # fetches data by distances
     withingRadius = stations_by_distance(stations, centre)
-    earthRadius = 6378.137
+    #earthRadius = 6378.137 *2
     withinRadius = []
         
     for monstat in withingRadius:
         name, town, ang = monstat#
-        dist = ang*earthRadius
+        dist = ang#*earthRadius
         if dist <= r:
             withinRadius.append(name)
 
@@ -124,22 +126,38 @@ def rivers_by_station_number(stations, N):
             if items[0] == stationName:
                 items[1] += 1
                 variableAdded = True
+                break
         
         #adds new station
         if variableAdded == False:
-            listOfStations.append((stationName,1))
+            thing = [stationName,1]
+            listOfStations.append(thing)
+
+        
             
             
             
     for station in stations:
         # get river name 
-        name = station.name
+        river = station.river
         # searches list for name
-        searchlist(name)
+        searchlist(river)
         
     # sorting
-    listOfStations.sort()
-    return listOfStations[:N]
+    #listOfStations.sort()
+
+    def firstEl(el):# this func has been checked but works for the sorting function
+        print(el[1])
+        return el[1]
+
+    stationListByCount = sorted(listOfStations, key = firstEl, reverse=True)
+
+    stationTuple = []
+    for item in stationListByCount:
+        thing = (item[0],item[1]) 
+        stationTuple.append(thing)
+
+    return stationTuple[:N]
 
 
 
