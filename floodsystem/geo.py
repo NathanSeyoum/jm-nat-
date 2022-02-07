@@ -32,7 +32,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         multOfSinLat = math.sin(lat_1) * math.sin(lat_2)
         multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
         diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
-
+        diffrenceInAngle *= 6378.137
         #to get actual angle multiply by earth radius
         
         return diffrenceInAngle
@@ -41,9 +41,10 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     for station in stations:
         #takes monetring station class and gets important bits 
         name = station.name 
+        town = station.town
         coordinateRaw = station.coord   # these are in WGS84 coordinate system
         coordinates = station.coord
-        stationsandDistances.append(name,angleBetweenCoordinates(coordinates)) 
+        stationsandDistances.append(name,town,angleBetweenCoordinates(coordinates)) 
 
     def firstEl(el):# this func has been checked but works for the sorting function
         return el[0]
