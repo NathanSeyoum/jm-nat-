@@ -40,10 +40,9 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     # itterator for the stations
     for station in stations:
         #takes monetring station class and gets important bits 
-        name = station.split('\n')[0].split(':')[1]
-        coordinateRaw = station.split('\n')[3].split(':')[1].split(",") # these are in WGS84 coordinate system
-        coordinatesTrimmed = coordinateRaw[1:-1] # spliting up the steps to reduce complexity
-        coordinates = tuple(map(float, coordinatesTrimmed.split(",")))
+        name = station.name 
+        coordinateRaw = station.coord   # these are in WGS84 coordinate system
+        coordinates = station.coord
         stationsandDistances.append(name,angleBetweenCoordinates(coordinates)) 
 
     def firstEl(el):# this func has been checked but works for the sorting function
@@ -132,7 +131,7 @@ def rivers_by_station_number(stations, N):
             
     for station in stations:
         # get river name 
-        name = station.split('\n')[5].split(':')[1]
+        name = station.name
         # searches list for name
         searchlist(name)
         
