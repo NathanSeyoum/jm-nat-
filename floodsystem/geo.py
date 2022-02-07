@@ -26,7 +26,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     
     def angleBetweenCoordinates(coords): # a function that uses the wikipida formula https://en.m.wikipedia.org/wiki/Great-circle_distance#Formulas
        
-       '''
+        '''
         #split tuples
         long_1,lat_1 = p
         long_2, lat_2 = coords
