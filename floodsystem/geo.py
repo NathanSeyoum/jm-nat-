@@ -119,10 +119,6 @@ def rivers_by_station_number(stations, N):
             thing = [stationName,1]
             listOfStations.append(thing)
 
-        
-            
-            
-            
     for station in stations:
         # get river name 
         river = station.river
@@ -130,7 +126,6 @@ def rivers_by_station_number(stations, N):
         searchlist(river)
         
     # sorting
-    #listOfStations.sort()
 
     def firstEl(el):# this func has been checked but works for the sorting function
         
