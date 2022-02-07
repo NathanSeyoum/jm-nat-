@@ -11,6 +11,7 @@ geographical data.
 #from .utils import sorted_by_key  # noqa
 import math
 from numpy import True_
+from haversine import haversine, Unit
 
 
 
@@ -25,19 +26,13 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     
     def angleBetweenCoordinates(coords): # a function that uses the wikipida formula https://en.m.wikipedia.org/wiki/Great-circle_distance#Formulas
        
+       '''
         #split tuples
         long_1,lat_1 = p
         long_2, lat_2 = coords
 
         #simplification of of math
-        '''
-        multOfSinLat = math.sin(lat_1) * math.sin(lat_2)
-        multOfCosLatTimesLong = math.cos(lat_1) * math.cos(lat_2) * math.cos(long_1-long_2)
-        diffrenceInAngle = math.acos(multOfSinLat + multOfCosLatTimesLong)
-        diffrenceInAngle *= 6378.137
-        '''
         
-        #stolen code
         # haversine formula 
         dlon = long_2 - long_1 
         dlat = lat_2 - lat_1 
@@ -45,10 +40,11 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         c = 2 * math.asin(math.sqrt(a)) 
         r = 6371
         #to get actual angle multiply by earth radius
+        '''
+        distance = haversine(coords, p, unit=Unit.KILOMETERS)
         
         # returns a distance now
-        #return diffrenceInAngle
-        return c * r 
+        return distance 
 
     # itterator for the stations
     for station in stations:
