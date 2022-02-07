@@ -44,10 +44,11 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         town = station.town
         coordinateRaw = station.coord   # these are in WGS84 coordinate system
         coordinates = station.coord
-        stationsandDistances.append(name,town,angleBetweenCoordinates(coordinates)) 
+        output = (name,town,angleBetweenCoordinates(coordinates))
+        stationsandDistances.append(output) 
 
     def firstEl(el):# this func has been checked but works for the sorting function
-        return el[0]
+        return el[2]
 
     stationListByDistance = sorted(stationsandDistances, key = firstEl)
     
