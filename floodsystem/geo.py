@@ -16,31 +16,12 @@ from haversine import haversine, Unit
 
 
 def stations_by_distance(stations, p):      #task 1B james mcallister
-    # returns list of names by points 
-    # needs testing
-
 
     #the return list
     stationsandDistances = []
     stationListByDistance = []
     
-    def angleBetweenCoordinates(coords): # a function that uses the wikipida formula https://en.m.wikipedia.org/wiki/Great-circle_distance#Formulas
-       
-        '''
-        #split tuples
-        long_1,lat_1 = p
-        long_2, lat_2 = coords
-
-        #simplification of of math
-        
-        # haversine formula 
-        dlon = long_2 - long_1 
-        dlat = lat_2 - lat_1 
-        a = math.sin(dlat/2)**2 + math.cos(lat_1) * math.cos(lat_2) * math.sin(dlon/2)**2
-        c = 2 * math.asin(math.sqrt(a)) 
-        r = 6371
-        #to get actual angle multiply by earth radius
-        '''
+    def angleBetweenCoordinates(coords): #bad name
         distance = haversine(coords, p, unit=Unit.KILOMETERS)
         
         # returns a distance now
@@ -51,7 +32,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
         #takes monetring station class and gets important bits 
         name = station.name 
         town = station.town
-        coordinateRaw = station.coord   # these are in WGS84 coordinate system
+        # these are in WGS84 coordinate system
         coordinates = station.coord
         output = (name,town,angleBetweenCoordinates(coordinates))
         stationsandDistances.append(output) 
@@ -65,7 +46,7 @@ def stations_by_distance(stations, p):      #task 1B james mcallister
     for n in stationListByDistance:
         listofNamesByDistance.append(n[0])
 
-    return stationListByDistance #TODO: @james mcallister put in distance away instead of angle and put in and town name 
+    return stationListByDistance 
 
 
 #task 1C @ james mcallister
