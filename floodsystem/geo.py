@@ -67,7 +67,7 @@ def stations_within_radius(stations, centre, r):
     withinRadius = []
         
     for monstat in withingRadius:
-        name,ang = monstat#
+        name, town, ang = monstat#
         dist = ang*earthRadius
         if dist <= r:
             withinRadius.append(name)
