@@ -25,6 +25,7 @@ def test_stations_by_distance():
     #checks furthest station
     assert stationsDistSorted[-10:] == [('Boscadjack', 'Wendron', 440.00325604140033), ('Gwithian', 'Gwithian', 442.0555261735786), ('Helston County Bridge', 'Helston', 443.3788620846717), ('Loe Pool', 'Helston', 445.0724593420217), ('Relubbus', 'Relubbus', 448.6500629265487), ('St Erth', 'St Erth', 449.0347773512542), ('St Ives Consols Farm', 'St Ives', 450.07409071624505), ('Penzance Tesco', 'Penzance', 456.38638836619003), ('Penzance Alverton', 'Penzance', 458.57727568406375), ('Penberth', 'Penberth', 467.53431870130544)]
 
+
 def test_stations_within_radius():
     # Build list of stations
     data = build_station_list()
@@ -32,9 +33,12 @@ def test_stations_within_radius():
 
     assert(stationDat == ['Cambridge Jesus Lock', 'Bin Brook', "Cambridge Byron's Pool", 'Cambridge Baits Bite', 'Girton', 'Haslingfield Burnt Mill', 'Oakington', 'Stapleford', 'Comberton', 'Dernford', 'Lode'])
 
+
 def test_rivers_by_station_number():
 
     data = build_station_list()
     rivStatDat = rivers_by_station_number(data, 9)
-    
-    assert rivStatDat == [('River Thames', 55), ('River Avon', 31), ('River Great Ouse', 30), ('River Derwent', 25), ('River Aire', 24), ('River Calder', 23), ('River Severn', 21), ('River Stour', 21), ('River Ouse', 18)], 'code doesnt quite work'
+    print (rivStatDat)
+    assert rivStatDat == [('River Thames', 54), ('River Avon', 31), ('River Great Ouse', 30), ('River Derwent', 25), ('River Aire', 24), ('River Calder', 23), ('River Severn', 21), ('River Stour', 21), ('River Ouse', 18)], 'code doesnt quite work'
+
+test_rivers_by_station_number()
