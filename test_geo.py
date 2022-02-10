@@ -41,4 +41,3 @@ def test_rivers_by_station_number():
     print (rivStatDat)
     assert rivStatDat == [('River Thames', 54), ('River Avon', 31), ('River Great Ouse', 30), ('River Derwent', 25), ('River Aire', 24), ('River Calder', 23), ('River Severn', 21), ('River Stour', 21), ('River Ouse', 18)], 'code doesnt quite work'
 
-test_rivers_by_station_number()
