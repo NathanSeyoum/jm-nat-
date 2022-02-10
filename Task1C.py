@@ -4,11 +4,6 @@ from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 
 
-#write assert tag
-#assert(stationDat == ['Cambridge Jesus Lock', 'Bin Brook', "Cambridge Byron's Pool", 'Cambridge Baits Bite', 'Girton', 'Haslingfield Burnt Mill', 'Oakington', 'Stapleford', 'Comberton', 'Dernford', 'Lode'])
-
-
-
 def run():
     """Requirements for Task 1C"""
 
