@@ -108,7 +108,14 @@ def rivers_by_station_number(stations, N):
         thing = (item[0],item[1]) 
         stationTuple.append(thing)
 
-    return stationTuple[:N]
+    def howManyToReturn(number):
+        if stationTuple[number -1][1] == stationTuple[number][1]:
+            return howManyToReturn(number + 1)
+        else:
+            return number
 
+    retNum = howManyToReturn(N)
+
+    return stationTuple[:retNum]
 
 
