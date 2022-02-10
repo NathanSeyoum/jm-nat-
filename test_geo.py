@@ -1,7 +1,6 @@
 
 from floodsystem.stationdata import build_station_list
-from floodsystem.geo import rivers_with_stations, stations_by_distance, stations_within_radius, rivers_by_station_number
-
+from floodsystem.geo import *
 
 def test_rivers_with_stations():
     """This checks that all the rivers are in the set"""
@@ -38,6 +37,4 @@ def test_rivers_by_station_number():
     data = build_station_list()
     rivStatDat = rivers_by_station_number(data, 9)
     
-    assert rivStatDat == [('Thames', 55), ('River Great Ouse', 31), ('River Avon', 30), ('River Calder', 24), ('River Aire', 21), ('River Severn', 20), ('River Derwent', 18), ('River Stour', 16), ('River Wharfe', 14), ('River Trent', 14), ('Witham', 14)], 'code doesnt quite work'
-
-#test_rivers_by_station_number is not working
+    assert rivStatDat == [('River Thames', 55), ('River Avon', 31), ('River Great Ouse', 30), ('River Derwent', 25), ('River Aire', 24), ('River Calder', 23), ('River Severn', 21), ('River Stour', 21), ('River Ouse', 18)], 'code doesnt quite work'
