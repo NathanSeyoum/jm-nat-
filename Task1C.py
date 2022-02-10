@@ -9,11 +9,10 @@ def run():
 
     # Build list of stations
     data = build_station_list()
-    stationDat = stations_within_radius(data,(52.2053, 0.1218),10)
-
-
-    # Display data :
-    print(stationDat.sort())
+    stationDat = stations_within_radius(data, (52.2053, 0.1218), 10)
+    stationDat.sort()
+    
+    print(stationDat)
 
 
 if __name__ == "__main__":

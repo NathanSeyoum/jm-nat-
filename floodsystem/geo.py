@@ -8,60 +8,30 @@ geographical data.
 
 #line commented out but is from original IA code
 
-#from .utils import sorted_by_key  # noqa
+from .utils import sorted_by_key  # noqa
 import math
 from numpy import True_
 from haversine import haversine, Unit
 
-
-
-def stations_by_distance(stations, p):      #task 1B james mcallister
-
-    #the return list
-    stationsandDistances = []
-    stationListByDistance = []
-    
-    def angleBetweenCoordinates(coords): #bad name
-        distance = haversine(coords, p, unit=Unit.KILOMETERS)
-        
-        # returns a distance now
-        return distance 
-
-    # itterator for the stations
+def stations_by_distance(stations, p): #for task1B
+    """returns a list of (station, distance) tuples where distance is the station's distance from p"""
+    alist = []
     for station in stations:
-        #takes monetring station class and gets important bits 
-        name = station.name 
-        town = station.town
-        # these are in WGS84 coordinate system
-        coordinates = station.coord
-        output = (name,town,angleBetweenCoordinates(coordinates))
-        stationsandDistances.append(output) 
-
-    def firstEl(el):# this func has been checked but works for the sorting function
-        return el[2]
-
-    stationListByDistance = sorted(stationsandDistances, key = firstEl)
-    
-    listofNamesByDistance = [] # 
-    for n in stationListByDistance:
-        listofNamesByDistance.append(n[0])
-
-    return stationListByDistance 
-
+        dist = haversine(station.coord, p, unit=Unit.KILOMETERS)
+        alist.append((station.name, dist))
+    return sorted_by_key(alist, 1)
 
 #task 1C @ james mcallister
 def stations_within_radius(stations, centre, r):
-    # fetches data by distances
-    withingRadius = stations_by_distance(stations, centre)
+    """returns a list of all the stations within a radius r from the centre"""
     withinRadius = []
-        
-    for monitor in withingRadius:
-        name, town, dist = monitor
-        if dist <= r:
-            withinRadius.append(name)
+
+    alist = stations_by_distance(stations, centre)
+    for station in alist:
+        if station[1] <= r:
+            withinRadius.append(station[0])
 
     return withinRadius
-
 
 #for task 1D by Nathan
 def rivers_with_stations(stations):
@@ -139,7 +109,6 @@ def rivers_by_station_number(stations, N):
         stationTuple.append(thing)
 
     return stationTuple[:N]
-
 
 
 
