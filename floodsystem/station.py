@@ -28,6 +28,7 @@ class MonitoringStation:
         self.town = town
 
         self.latest_level = None
+        
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -55,11 +56,12 @@ class MonitoringStation:
     def relative_water_level(self): # task 2B by james mcallister
 
         #quick calcs with useful data
-        if self.latest_level == None: #checks data is valed
+        if self.latest_level == None or self.typical_range == None: #checks data is valed
             return None
         else: 
             bottom, top = self.typical_range
-            return (self.latest_level - bottom)/(top - bottom)
+            quickMath = (self.latest_level - bottom)/(top - bottom)
+            return quickMath
 
 
 
