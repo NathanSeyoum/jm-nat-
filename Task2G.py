@@ -76,8 +76,7 @@ def riskAnalysis(stations):
         
     return stationDanger
 
-stations = build_station_list()
-print(riskAnalysis(stations))
+
 
 '''
 how this works 
@@ -88,4 +87,14 @@ how this works
 '''
 
 
-    
+def run():
+    """Requirements for Task 2G"""
+
+    stations = build_station_list()
+    print(riskAnalysis(stations))
+
+
+if __name__ == "__main__":
+    print("*** Task 2G: CUED Part IA Flood Warning System ***")
+    run()
+
