@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-#for task2F (incomplete)
+#for task2F
 def polyfit(dates, levels, p):
 
     # converts dates into floats, 

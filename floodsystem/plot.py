@@ -3,16 +3,14 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
+from .analysis import polyfit
 
 #for task 2E 
 def plot_water_levels(station, dates, levels):
     """displays a plot of the water level data against time for a station"""
 
-    t = dates
-    level = levels
-
     # Plot
-    plt.plot(t, level)
+    plt.plot(dates, levels)
 
     #adds plot lines for typical low and high levels
     levelRange = station.typical_range
@@ -32,30 +30,27 @@ def plot_water_levels(station, dates, levels):
     plt.show()
 
 
-#for task2F (incomplete)
+#for task 2F
 def plot_water_level_with_fit(station, dates, levels, p):
+    """plots water level data and best fit polynomial"""
 
+    poly, d0 = polyfit(dates, levels, p)
 
-    # converts dates into floats, 
-    # where the floats are the time in days since the year 0001
-    x = matplotlib.dates.date2num(dates)
-    y = levels
+    #format data
+    dates = matplotlib.dates.date2num(dates) - d0    
+    x1 = np.linspace(dates[0],dates[-1],30)
 
-    # Using shifted x values, find coefficient of best-fit
-    # polynomial f(x) of degree 4
-    p_coeff = np.polyfit(x - x[0], y, p)
+    #plot 
+    plt.plot(dates, levels, '.')
+    plt.plot(x1, poly(x1))
+    
+    #adds plot for typical high/low range
+    plt.plot(x1, np.linspace(station.typical_range[0],station.typical_range[0],30),"-r")
+    plt.plot(x1, np.linspace(station.typical_range[1],station.typical_range[1],30),"-r")
 
-    # Convert coefficient into a polynomial that can be evaluated
-    # e.g. poly(0.3)
-    poly = np.poly1d(p_coeff)
+    #add titles and labels
+    plt.xlabel("days ago")
+    plt.ylabel("water level(m)")
+    plt.title(station.name)
 
-    # Plot original data points
-    plt.plot(x, y, '.')
-
-    # Plot polynomial fit at 30 points along interval (note that polynomial
-    # is evaluated using the shift x)
-    x1 = np.linspace(x[0], x[-1], 30)
-    plt.plot(x1, poly(x1 - x[0]))
-
-    # Display plot
     plt.show()
