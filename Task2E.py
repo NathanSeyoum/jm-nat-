@@ -14,7 +14,7 @@ def run():
     #builds list of the 5 stations at which the water level is highest
     at_risk_stations = stations_highest_rel_level(stations, 5)
 
-    #plots the the level data at each of those stationa over the past 10 days 
+    #plots the level data at each of those stationa over the past 10 days 
     for station in at_risk_stations:
         dt = 10
         dates, levels = fetch_measure_levels(station.measure_id,
@@ -22,7 +22,6 @@ def run():
         plot_water_levels(station, dates, levels)
 
 
-"""returns an unexpected output"""
 
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")

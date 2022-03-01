@@ -4,7 +4,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 
-#for task 2E - add plot lines for typical high and low levels
+#for task 2E 
 def plot_water_levels(station, dates, levels):
     """displays a plot of the water level data against time for a station"""
 
@@ -13,6 +13,12 @@ def plot_water_levels(station, dates, levels):
 
     # Plot
     plt.plot(t, level)
+
+    #adds plot lines for typical low and high levels
+    levelRange = station.typical_range
+    plt.axhline(y=levelRange[0])
+    plt.axhline(y=levelRange[1])
+
 
     # Add axis labels, rotate date labels and add plot title
     plt.xlabel('date')
