@@ -59,3 +59,18 @@ def test_inconsistent_typical_range_stations():
     assert(a in inconsistent_typical_range_stations(stations))
     assert(b not in inconsistent_typical_range_stations(stations))
 
+
+def test_relative_water_levels():
+    """tests for the output when typical data range is unavailable"""
+    
+    # Create a station without data for typical low/high ranges
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (0, 0)
+    trange = None
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
+    assert(s.relative_water_level() == None)
+
